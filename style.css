@@ -1,0 +1,256 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 100%;
+}
+body {
+	padding: 16px;
+	box-sizing: border-box;
+}
+#container1,
+#container2,
+#container3,
+#container4,
+#container5 {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	box-sizing: border-box;
+	padding-bottom: 20px;
+	margin-bottom: 16px;
+}
+#switchMode {
+	position: fixed;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	width: 200px;
+	margin: 0 auto;
+	text-align: center;
+	color: rgb(53, 164, 236);
+	background: white;
+	border-radius: 10px;
+	padding: 6px;
+}
+
+.grid-canvas {
+	position: absolute;
+}
+
+.vertical {
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 1px;
+	background-color: #aaa;
+	/*transition: transform 0.2s ease;*/
+}
+.overlay-cont,
+.grid-canvas {
+	margin-top: 30px;
+}
+.overlay,
+.overlay-cont {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.badges {
+	display: flex;
+	flex-flow: row wrap;
+	margin-top: 10px;
+}
+.badges-item {
+	padding: 6px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #aaa;
+	border-radius: 20px;
+	min-width: 60px;
+	cursor: pointer;
+}
+.badges-item-icon,
+.badges-item-text {
+	display: inline-block;
+	vertical-align: middle;
+}
+.badges-item-icon svg {
+	width: 100%;
+	padding: 4px;
+	box-sizing: border-box;
+}
+.badges-item-icon path {
+	fill: #fff;
+}
+.badges-item--inactive .badges-item-icon {
+	background-color: transparent!important;
+}
+.badges-item-text {
+	margin: 0 10px;
+	max-width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.badges-item-icon {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+
+.tooltip {
+	position: absolute;
+	top: 10px;
+	display: none;
+	width: 100%;
+	justify-content: center;
+}
+.tooltip-cont {
+	border-radius: 5px;
+	box-shadow: 0 0 2px rgba(0,0,0,0.3);
+	padding: 10px;
+	background-color: white;
+	min-width: 80px;
+}
+.tooltip-items {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin-top: 5px;
+}
+.tooltip-item {
+	padding-right: 10px;
+}
+.tooltip-point {
+	width: 4px;
+	height: 4px;
+	border-radius: 100%;
+	background-color: white;
+	margin-left: -3px;
+	margin-bottom: -3px;
+	bottom: 0;
+	position: absolute;
+}
+.tooltip-value {
+	font-weight: 600;
+	margin-bottom: 3px;
+}
+.tooltip-text {
+	font-size: 0.7em;
+}
+
+.scale {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 6px;
+	margin: 4px 0;
+	position: relative;
+	overflow: hidden;
+}
+.scale-cont {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.scale-left,
+.scale-right,
+.scale-center {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	cursor: pointer;
+	width: 100%;
+}
+.scale-left,
+.scale-right {
+	background-color: rgba(64, 86, 107, 0.3);
+	box-sizing: border-box;
+	display: none;
+	transition: transform 0.2s ease
+}
+.scale-left {
+	right: 100%;
+	margin-right: -6px;
+	border-right: 6px solid rgba(64, 86, 107, 0.3);
+}
+.scale-right {
+	margin-left: -6px;
+	border-left: 6px solid rgba(64, 86, 107, 0.3);
+}
+
+.x-labels {
+	position: relative;
+	width: 100%;
+	height: 20px;
+	overflow: hidden;
+}
+.x-labels div {
+	position: absolute;
+	color: #777;
+	font-size: 12px;
+	width: 50px;
+	margin-left: -25px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.y-labels {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+}
+.y-labels div {
+	position: absolute;
+	color: #777;
+	font-size: 12px;
+	bottom: 1px;
+	background-color: white;
+}
+
+body.night-mode,
+.night-mode .tooltip-cont {
+	color: white;
+}
+body.night-mode,
+.night-mode .y-labels div,
+.night-mode .tooltip-point,
+.night-mode .tooltip-cont,
+.night-mode #switchMode {
+	background-color: #242f3e;
+}
+.night-mode .tooltip-cont {
+	box-shadow: 0 0 2px rgba(0,0,0,0.8);
+}
+.night-mode .vertical {
+	background-color: #777;
+}
+.night-mode .scale,
+.night-mode .badges-item {
+	border-color: #555;
+}
+
+body,
+.tooltip-cont {
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+.y-labels div,
+.tooltip-point,
+.vertical,
+#switchMode {
+	transition: background-color 0.2s ease;
+}
+.scale,
+.badges-item {
+	transition: border-color 0.2s ease;
+}
